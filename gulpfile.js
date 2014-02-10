@@ -5,10 +5,6 @@ var jasmine = require('gulp-jasmine');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
-gulp.task('default', function () {
-
-});
-
 gulp.task('lint', function () {
     gulp.src('./*.js')
         .pipe(jshint())
@@ -26,3 +22,5 @@ gulp.task('uglify', function () {
         .pipe(rename('lambada.min.js'))
         .pipe(gulp.dest('.'));
 });
+
+gulp.task('default', ['lint', 'test']);
