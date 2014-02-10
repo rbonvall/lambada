@@ -1,6 +1,6 @@
 # Lambada
 
-Lambada is just the lambda-string part
+Lambada is just the string lambda part
 of [Functional Javascript](https://github.com/osteele/functional-javascript).
 
 Lambada allow you to create simple functions easily,
@@ -28,10 +28,29 @@ you can write this:
 
 And so instead of dancing like this:
 
-    \o
-     |\
-    /\
+    \o     o/   \o\
+     |\   /|     |
+    /\    < \   /\
 
 you can dance like this:
 
 ![Lambada](http://31.media.tumblr.com/4c9669b5138ff14cffa81d0b0f0e0e4e/tumblr_mijb4m6nkZ1rqbnt0o1_500.gif)
+
+
+## Instructions
+
+Install development dependencies:
+
+    $ npm install
+
+Lint and run tests:
+
+    $ gulp
+
+Create minified version:
+
+    $ gulp uglify
+
+Lambada implements [UMD](https://github.com/umdjs/umd)
+so it should play well (*crosses fingers*)
+with RequireJS, Node and Browserify.
