@@ -26,3 +26,12 @@ you can write this:
         .attr('cy', λ('d, i -> 50 * i'))
         .attr('r',  λ('5 * Math.sqrt(x)'));
 
+And so instead of dancing like this:
+
+    \o
+     |\
+    /\
+
+you can dance like this:
+
+![Lambada](http://31.media.tumblr.com/4c9669b5138ff14cffa81d0b0f0e0e4e/tumblr_mijb4m6nkZ1rqbnt0o1_500.gif)
