@@ -1,3 +1,7 @@
+/* global describe */
+/* global it */
+/* global expect */
+
 var λ = require('./lambada');
 
 describe('lambada', function () {

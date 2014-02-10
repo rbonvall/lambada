@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var gutil = require('gulp-util');
 var jshint = require('gulp-jshint');
 var jasmine = require('gulp-jasmine');
 var uglify = require('gulp-uglify');
