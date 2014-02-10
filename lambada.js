@@ -42,11 +42,14 @@
                 // or 'arguments'; and also the insides of strings (by a crude test).
                 // `match` extracts the remaining symbols.
                 var vars = expr.replace(/(?:\b[A-Z]|\.[a-zA-Z_$])[a-zA-Z_$\d]*|[a-zA-Z_$][a-zA-Z_$\d]*\s*:|true|false|null|undefined|this|arguments|'(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"/g, '').match(/([a-z_$][a-z_$\d]*)/gi) || []; // '
-                for (var i = 0, v; v = vars[i]; i++) {
-                    params.indexOf(v) >= 0 || params.push(v);
+                for (var i = 0, v; !!(v = vars[i]); i += 1) {
+                    if (params.indexOf(v) < 0) {
+                        params.push(v);
+                    }
                 }
             }
         }
+        /* jshint -W054 */
         return new Function(params, 'return (' + expr + ')');
     };
 
