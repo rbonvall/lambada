@@ -5,18 +5,18 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
 gulp.task('lint', function () {
-    gulp.src('./*.js')
+    return gulp.src('./*.js')
         .pipe(jshint('jshintrc.json'))
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('test', function () {
-    gulp.src('test.js')
+    return gulp.src('test.js')
         .pipe(jasmine());
 });
 
 gulp.task('uglify', function () {
-    gulp.src('lambada.js')
+    return gulp.src('lambada.js')
         .pipe(uglify())
         .pipe(rename('lambada.min.js'))
         .pipe(gulp.dest('.'));
