@@ -17,7 +17,7 @@
                 expr = sections.pop();
                 params = sections.pop().replace(/^\s*(.*)\s*$/, '$1').split(/\s*,\s*|\s+/m);
                 if (sections.length) {
-                    sections.push('(function(' + params + '){ return (' + expr + ')}; )');
+                    sections.push('(function(' + params + ') { return(' + expr + ') })');
                 }
             }
         } else if (expr.match(/\b_\b/)) {
