@@ -17,6 +17,20 @@ describe('lambada', function () {
         expect(f(10)).toBe(13);
     });
 
+    it("passes Functional Javascript's tests", function () {
+        expect(λ('x -> x + 1')(1)).toBe(2);
+        expect(λ('x y -> x + 2*y')(1, 2)).toBe(5);
+        expect(λ('x, y -> x + 2*y')(1, 2)).toBe(5);
+        expect(λ('_ + 1')(1)).toBe(2);
+        expect(λ('/2')(4)).toBe(2);
+        expect(λ('2/')(4)).toBe(0.5);
+        expect(λ('/')(2,4)).toBe(0.5);
+        expect(λ('x + 1')(1)).toBe(2);
+        expect(λ('x + 2*y')(1, 2)).toBe(5);
+        expect(λ('y + 2*x')(1, 2)).toBe(5);
+        expect(λ('x -> y -> x + 2*y')(1)(2)).toBe(5);
+    });
+
     it('creates a binary function for a simple expression', function () {
         var f = λ('x + 2 * y');
         expect(typeof f).toBe('function');
