@@ -9,7 +9,7 @@
     }
 }(this, function () {
 
-    var lambada = function (expr) {
+    var createFunction = function (expr) {
         var params = [],
             sections = expr.split(/\s*->\s*/m);
         if (sections.length > 1) {
@@ -51,6 +51,8 @@
         /* jshint -W054 */
         return new Function(params, 'return (' + expr + ')');
     };
+
+    var lambada = createFunction;
 
     return lambada;
 }));
