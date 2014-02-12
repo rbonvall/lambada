@@ -13,7 +13,7 @@
   "version": "0.0.0",
   "main": "lambada.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "node_modules/gulp-jasmine/node_modules/minijasminenode/bin/minijn test.js"
   },
   "repository": {
     "type": "git",
