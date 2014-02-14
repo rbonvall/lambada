@@ -4,6 +4,15 @@
 
 var λ = require('./lambada');
 
+var numbers = [[-1], [0], [1], [Math.PI], [0.1], [142857], [Infinity]];
+var pairs = [[0, 0], [Math.PI, -Math.SQRT2], [1, 1], [-1, 0], [100/7, -200/13]];
+
+function compareFunctions(f, g, domain) {
+    domain.forEach(function (args) {
+        expect(f.apply(null, args)).toBe(g.apply(null, args));
+    });
+}
+
 describe('lambada', function () {
     it('should return a function', function () {
         expect(typeof λ).toBe('function');
@@ -12,9 +21,7 @@ describe('lambada', function () {
     it('creates a unary function for a simple expression', function () {
         var f = λ('3 + x');
         expect(typeof f).toBe('function');
-        expect(f(-10)).toBe(-7);
-        expect(f(0)).toBe(3);
-        expect(f(10)).toBe(13);
+        compareFunctions(f, function (x) { return 3 + x; }, numbers);
     });
 
     it("passes Functional Javascript's tests", function () {
@@ -34,24 +41,19 @@ describe('lambada', function () {
     it('creates a binary function for a simple expression', function () {
         var f = λ('x + 2 * y');
         expect(typeof f).toBe('function');
-        expect(f(3, 4)).toBe(11);
-        expect(f(4, 3)).toBe(10);
-        expect(f(2, 7)).toBe(16);
+        compareFunctions(f, function (x, y) { return x + 2 * y; }, pairs);
     });
 
     it('creates a function for a binary operator', function () {
         var f = λ('+');
         expect(typeof f).toBe('function');
-        expect(f(3, 2)).toBe(5);
-        expect(f(-3, 4)).toBe(1);
-        expect(f(8, 8)).toBe(16);
+        compareFunctions(f, function (x, y) { return x + y; }, pairs);
     });
 
     it('creates a function for a partially applied binary operator', function () {
         var f = λ('+3');
         expect(typeof f).toBe('function');
-        expect(f(-10)).toBe(-7);
-        expect(f(0)).toBe(3);
-        expect(f(10)).toBe(13);
+        compareFunctions(f, function (x) { return x + 3; }, numbers);
     });
+
 });
