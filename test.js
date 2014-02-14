@@ -18,12 +18,6 @@ describe('lambada', function () {
         expect(typeof λ).toBe('function');
     });
 
-    it('creates a unary function for a simple expression', function () {
-        var f = λ('3 + x');
-        expect(typeof f).toBe('function');
-        compareFunctions(f, function (x) { return 3 + x; }, numbers);
-    });
-
     it("passes Functional Javascript's tests", function () {
         expect(λ('x -> x + 1')(1)).toBe(2);
         expect(λ('x y -> x + 2*y')(1, 2)).toBe(5);
@@ -36,6 +30,12 @@ describe('lambada', function () {
         expect(λ('x + 2*y')(1, 2)).toBe(5);
         expect(λ('y + 2*x')(1, 2)).toBe(5);
         expect(λ('x -> y -> x + 2*y')(1)(2)).toBe(5);
+    });
+
+    it('creates a unary function for a simple expression', function () {
+        var f = λ('3 + x');
+        expect(typeof f).toBe('function');
+        compareFunctions(f, function (x) { return 3 + x; }, numbers);
     });
 
     it('creates a binary function for a simple expression', function () {
