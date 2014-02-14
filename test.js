@@ -14,7 +14,7 @@ function compareFunctions(f, g, domain) {
 }
 
 describe('lambada', function () {
-    it('should return a function', function () {
+    it('should be a function', function () {
         expect(typeof λ).toBe('function');
     });
 
