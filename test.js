@@ -57,3 +57,17 @@ describe('lambada', function () {
     });
 
 });
+
+describe('lambada.sequence', function () {
+    it('exists and is a function', function () {
+        expect(λ.sequence).toBeDefined();
+        expect(typeof λ.sequence).toBe('function');
+    });
+});
+
+describe('lambada.compose', function () {
+    it('exists and is a function', function () {
+        expect(λ.compose).toBeDefined();
+        expect(typeof λ.compose).toBe('function');
+    });
+});

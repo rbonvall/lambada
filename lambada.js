@@ -54,5 +54,8 @@
 
     var lambada = createFunction;
 
+    lambada.sequence = function () {};
+    lambada.compose = function () {};
+
     return lambada;
 }));
