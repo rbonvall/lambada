@@ -52,7 +52,15 @@
         return new Function(params, 'return (' + expr + ')');
     };
 
-    var lambada = createFunction;
+    var functionCache = {};
+    var memoizedCreateFunction = function (expr) {
+        if (!functionCache[expr]) {
+            functionCache[expr] = createFunction(expr);
+        }
+        return functionCache[expr];
+    };
+
+    var lambada = memoizedCreateFunction;
 
     lambada.sequence = function () {};
     lambada.compose = function () {};

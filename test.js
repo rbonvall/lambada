@@ -56,6 +56,13 @@ describe('lambada', function () {
         compareFunctions(f, function (x) { return x + 3; }, numbers);
     });
 
+    it('caches functions', function () {
+        var f = λ('x -> 2 * x + 5');
+        var g = λ('x -> 2 * x + 5');
+        expect(typeof f).toBe('function');
+        expect(typeof g).toBe('function');
+        expect(f).toBe(g);
+    });
 });
 
 describe('lambada.sequence', function () {
