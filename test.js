@@ -50,10 +50,16 @@ describe('lambada', function () {
         compareFunctions(f, function (x, y) { return x + y; }, pairs);
     });
 
-    it('creates a function for a partially applied binary operator', function () {
-        var f = λ('+3');
+    it('creates a function for a partially applied postfix binary operator', function () {
+        var f = λ('3-');
         expect(typeof f).toBe('function');
-        compareFunctions(f, function (x) { return x + 3; }, numbers);
+        compareFunctions(f, function (x) { return 3 - x; }, numbers);
+    });
+
+    it('creates a function for a partially applied postfix binary operator', function () {
+        var f = λ('/5');
+        expect(typeof f).toBe('function');
+        compareFunctions(f, function (x) { return x / 5; }, numbers);
     });
 
     it('caches functions', function () {
