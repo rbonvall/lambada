@@ -68,15 +68,12 @@
     };
 
     var map = Array.prototype.map;
+    var apply = function (x, f) { return f(x) };
 
     lambada.sequence = function () {
         var fns = map.call(arguments, lambada);
         return function (x) {
-            var n = fns.length;
-            for (var i = 0; i < n; i += 1) {
-                x = fns[i](x);
-            }
-            return x;
+            return fns.reduce(apply, x);
         };
     };
 
