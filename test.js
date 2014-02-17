@@ -6,6 +6,7 @@ var λ = require('./lambada');
 
 var numbers = [[-1], [0], [1], [Math.PI], [0.1], [142857], [Infinity]];
 var pairs = [[0, 0], [Math.PI, -Math.SQRT2], [1, 1], [-1, 0], [100/7, -200/13]];
+var triplets = [[0, 0, 0], [Math.PI, -Math.SQRT2, 100], [1, 3, 2], [100/7, -200/13, 400/Math.E]];
 
 function compareFunctions(f, g, domain) {
     domain.forEach(function (args) {
@@ -94,6 +95,12 @@ describe('lambada.sequence', function () {
         var g = function (x) { return Math.floor(x * 100) / 10; }
         compareFunctions(f, g, numbers);
     });
+
+    it('can accept a non-unary function as a first argument', function () {
+        var f = λ.sequence(Math.max, '/100');
+        var g = function () { return Math.max.apply(null, Array.prototype.slice.call(arguments)) / 100; }
+        compareFunctions(f, g, triplets);
+    });
 });
 
 describe('lambada.compose', function () {
@@ -112,5 +119,11 @@ describe('lambada.compose', function () {
         var f = λ.compose(Math.exp, '*2', Math.abs);
         var g = function (x) { return Math.exp(2 * Math.abs(x)); }
         compareFunctions(f, g, numbers);
+    });
+
+    it('can accept a non-unary function as a last argument', function () {
+        var f = λ.compose(Math.floor, Math.pow);
+        var g = function () { return Math.floor(Math.pow.apply(null, Array.prototype.slice.call(arguments))); }
+        compareFunctions(f, g, pairs);
     });
 });

@@ -68,19 +68,20 @@
     };
 
     var map = Array.prototype.map;
-    var apply = function (x, f) { return f(x) };
+    var slice = Array.prototype.slice;
+    var apply = function (args, f) { return [f.apply(null, args)]; };
 
     lambada.sequence = function () {
         var fns = map.call(arguments, lambada);
-        return function (x) {
-            return fns.reduce(apply, x);
+        return function () {
+            return fns.reduce(apply, slice.call(arguments))[0];
         };
     };
 
     lambada.compose = function () {
         var fns = map.call(arguments, lambada);
         return function (x) {
-            return fns.reduceRight(apply, x);
+            return fns.reduceRight(apply, slice.call(arguments))[0];
         };
     };
 
