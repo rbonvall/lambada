@@ -67,7 +67,19 @@
         return memoizedCreateFunction(arg);
     };
 
-    lambada.sequence = function () {};
+    var map = Array.prototype.map;
+
+    lambada.sequence = function () {
+        var fns = map.call(arguments, lambada);
+        return function (x) {
+            var n = fns.length;
+            for (var i = 0; i < n; i += 1) {
+                x = fns[i](x);
+            }
+            return x;
+        };
+    };
+
     lambada.compose = function () {};
 
     return lambada;

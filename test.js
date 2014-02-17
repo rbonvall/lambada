@@ -82,6 +82,12 @@ describe('lambada.sequence', function () {
         expect(λ.sequence).toBeDefined();
         expect(typeof λ.sequence).toBe('function');
     });
+
+    it('applies unary functions from left to right', function () {
+        var f = λ.sequence('+2', '*3', '4-');
+        var g = function(x) { return 4 - ((x + 2) * 3); };
+        compareFunctions(f, g, numbers);
+    });
 });
 
 describe('lambada.compose', function () {
