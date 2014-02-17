@@ -77,7 +77,12 @@
         };
     };
 
-    lambada.compose = function () {};
+    lambada.compose = function () {
+        var fns = map.call(arguments, lambada).reverse();
+        return function (x) {
+            return fns.reduce(apply, x);
+        };
+    };
 
     return lambada;
 }));

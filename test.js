@@ -95,4 +95,10 @@ describe('lambada.compose', function () {
         expect(λ.compose).toBeDefined();
         expect(typeof λ.compose).toBe('function');
     });
+
+    it('applies unary functions from right to left', function () {
+        var f = λ.compose('+2', '*3', '4-');
+        var g = function(x) { return ((4 - x) * 3) + 2; };
+        compareFunctions(f, g, numbers);
+    });
 });
