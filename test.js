@@ -88,6 +88,12 @@ describe('lambada.sequence', function () {
         var g = function(x) { return 4 - ((x + 2) * 3); };
         compareFunctions(f, g, numbers);
     });
+
+    it('handles regular functions correctly', function () {
+        var f = λ.sequence('*100', Math.floor, '/10');
+        var g = function (x) { return Math.floor(x * 100) / 10; }
+        compareFunctions(f, g, numbers);
+    });
 });
 
 describe('lambada.compose', function () {
@@ -99,6 +105,12 @@ describe('lambada.compose', function () {
     it('applies unary functions from right to left', function () {
         var f = λ.compose('+2', '*3', '4-');
         var g = function(x) { return ((4 - x) * 3) + 2; };
+        compareFunctions(f, g, numbers);
+    });
+
+    it('handles regular functions correctly', function () {
+        var f = λ.compose(Math.exp, '*2', Math.abs);
+        var g = function (x) { return Math.exp(2 * Math.abs(x)); }
         compareFunctions(f, g, numbers);
     });
 });
