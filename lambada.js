@@ -78,9 +78,9 @@
     };
 
     lambada.compose = function () {
-        var fns = map.call(arguments, lambada).reverse();
+        var fns = map.call(arguments, lambada);
         return function (x) {
-            return fns.reduce(apply, x);
+            return fns.reduceRight(apply, x);
         };
     };
 
