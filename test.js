@@ -69,6 +69,12 @@ describe('lambada', function () {
         expect(typeof g).toBe('function');
         expect(f).toBe(g);
     });
+
+    it('returns a function unchanged', function () {
+        var f = function () {};
+        var g = λ(f);
+        expect(f).toBe(g);
+    });
 });
 
 describe('lambada.sequence', function () {

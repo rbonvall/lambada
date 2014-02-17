@@ -60,7 +60,12 @@
         return functionCache[expr];
     };
 
-    var lambada = memoizedCreateFunction;
+    var lambada = function (arg) {
+        if (typeof arg === 'function') {
+            return arg;
+        }
+        return memoizedCreateFunction(arg);
+    };
 
     lambada.sequence = function () {};
     lambada.compose = function () {};
