@@ -104,7 +104,9 @@ describe('lambada.sequence', function () {
 
     it('can accept a non-unary function as a first argument', function () {
         var f = λ.sequence(Math.max, '/100');
-        var g = function () { return Math.max.apply(null, Array.prototype.slice.call(arguments)) / 100; };
+        var g = function () {
+            return Math.max.apply(null, Array.prototype.slice.call(arguments)) / 100;
+        };
         compareFunctions(f, g, triplets);
     });
 });
@@ -129,7 +131,9 @@ describe('lambada.compose', function () {
 
     it('can accept a non-unary function as a last argument', function () {
         var f = λ.compose(Math.floor, Math.pow);
-        var g = function () { return Math.floor(Math.pow.apply(null, Array.prototype.slice.call(arguments))); };
+        var g = function () {
+            return Math.floor(Math.pow.apply(null, Array.prototype.slice.call(arguments)));
+        };
         compareFunctions(f, g, pairs);
     });
 });
