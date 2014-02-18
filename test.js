@@ -9,6 +9,8 @@ var pairs = [[0, 0], [Math.PI, -Math.SQRT2], [1, 1], [-1, 0], [100/7, -200/13]];
 var triplets = [[0, 0, 0], [Math.PI, -Math.SQRT2, 100], [1, 3, 2], [100/7, -200/13, 400/Math.E]];
 
 function compareFunctions(f, g, domain) {
+    expect(typeof f).toBe('function');
+    expect(typeof g).toBe('function');
     domain.forEach(function (args) {
         expect(f.apply(null, args)).toBe(g.apply(null, args));
     });
@@ -35,31 +37,26 @@ describe('lambada', function () {
 
     it('creates a unary function for a simple expression', function () {
         var f = λ('3 + x');
-        expect(typeof f).toBe('function');
         compareFunctions(f, function (x) { return 3 + x; }, numbers);
     });
 
     it('creates a binary function for a simple expression', function () {
         var f = λ('x + 2 * y');
-        expect(typeof f).toBe('function');
         compareFunctions(f, function (x, y) { return x + 2 * y; }, pairs);
     });
 
     it('creates a function for a binary operator', function () {
         var f = λ('+');
-        expect(typeof f).toBe('function');
         compareFunctions(f, function (x, y) { return x + y; }, pairs);
     });
 
     it('creates a function for a partially applied postfix binary operator', function () {
         var f = λ('3-');
-        expect(typeof f).toBe('function');
         compareFunctions(f, function (x) { return 3 - x; }, numbers);
     });
 
     it('creates a function for a partially applied postfix binary operator', function () {
         var f = λ('/5');
-        expect(typeof f).toBe('function');
         compareFunctions(f, function (x) { return x / 5; }, numbers);
     });
 
