@@ -79,10 +79,8 @@
     };
 
     lambada.compose = function () {
-        var fns = map.call(arguments, lambada);
-        return function (x) {
-            return fns.reduceRight(apply, slice.call(arguments))[0];
-        };
+        var reversedArgs = slice.call(arguments).reverse();
+        return lambada.sequence.apply(null, reversedArgs);
     };
 
     return lambada;
