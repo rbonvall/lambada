@@ -98,13 +98,13 @@ describe('lambada.sequence', function () {
 
     it('handles regular functions correctly', function () {
         var f = λ.sequence('*100', Math.floor, '/10');
-        var g = function (x) { return Math.floor(x * 100) / 10; }
+        var g = function (x) { return Math.floor(x * 100) / 10; };
         compareFunctions(f, g, numbers);
     });
 
     it('can accept a non-unary function as a first argument', function () {
         var f = λ.sequence(Math.max, '/100');
-        var g = function () { return Math.max.apply(null, Array.prototype.slice.call(arguments)) / 100; }
+        var g = function () { return Math.max.apply(null, Array.prototype.slice.call(arguments)) / 100; };
         compareFunctions(f, g, triplets);
     });
 });
@@ -123,13 +123,13 @@ describe('lambada.compose', function () {
 
     it('handles regular functions correctly', function () {
         var f = λ.compose(Math.exp, '*2', Math.abs);
-        var g = function (x) { return Math.exp(2 * Math.abs(x)); }
+        var g = function (x) { return Math.exp(2 * Math.abs(x)); };
         compareFunctions(f, g, numbers);
     });
 
     it('can accept a non-unary function as a last argument', function () {
         var f = λ.compose(Math.floor, Math.pow);
-        var g = function () { return Math.floor(Math.pow.apply(null, Array.prototype.slice.call(arguments))); }
+        var g = function () { return Math.floor(Math.pow.apply(null, Array.prototype.slice.call(arguments))); };
         compareFunctions(f, g, pairs);
     });
 });
