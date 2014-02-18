@@ -76,6 +76,12 @@ describe('lambada', function () {
         var g = λ(f);
         expect(f).toBe(g);
     });
+
+    it('supports dot something as an operation', function () {
+        var f = λ('.foo');
+        var obj = { foo: 5, bar: 6, baz: 7 };
+        expect(f(obj)).toBe(5);
+    });
 });
 
 describe('lambada.sequence', function () {
