@@ -8,6 +8,8 @@ var numbers = [[-1], [0], [1], [Math.PI], [0.1], [142857], [Infinity]];
 var pairs = [[0, 0], [Math.PI, -Math.SQRT2], [1, 1], [-1, 0], [100/7, -200/13]];
 var triplets = [[0, 0, 0], [Math.PI, -Math.SQRT2, 100], [1, 3, 2], [100/7, -200/13, 400/Math.E]];
 
+var slice = Array.prototype.slice;
+
 function compareFunctions(f, g, domain) {
     expect(typeof f).toEqual('function');
     expect(typeof g).toEqual('function');
@@ -102,7 +104,7 @@ describe('λ.sequence', function () {
     it('can accept a non-unary function as a first argument', function () {
         var f = λ.sequence(Math.max, '/100');
         var g = function () {
-            return Math.max.apply(null, Array.prototype.slice.call(arguments)) / 100;
+            return Math.max.apply(null, slice.call(arguments)) / 100;
         };
         compareFunctions(f, g, triplets);
     });
@@ -129,7 +131,7 @@ describe('λ.compose', function () {
     it('can accept a non-unary function as a last argument', function () {
         var f = λ.compose(Math.floor, Math.pow);
         var g = function () {
-            return Math.floor(Math.pow.apply(null, Array.prototype.slice.call(arguments)));
+            return Math.floor(Math.pow.apply(null, slice.call(arguments)));
         };
         compareFunctions(f, g, pairs);
     });
@@ -154,7 +156,7 @@ describe('λ.flip', function () {
     });
 
     it('keeps arguments after the second untouched', function () {
-        var f = λ.flip(function () { return Array.prototype.slice.call(arguments); });
+        var f = λ.flip(function () { return slice.call(arguments); });
         expect(f(11, 22, 33, 44, 55)).toEqual([22, 11, 33, 44, 55]);
     });
 });
