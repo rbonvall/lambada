@@ -1,43 +1,51 @@
-# Lambada
+# Lambada — create simply functions easily in JavaScript
 
-Lambada is just the string lambda part
-of [Functional Javascript](https://github.com/osteele/functional-javascript).
+> A lambda função vai estar com ele aonde for.
 
-Lambada allow you to create simple functions easily,
-so instead of this:
+Lambada is a small library for creating simple functions easily in Javascript.
+It borrows the **string lambda** concept (and source code) from the
+[Functional Javascript](https://github.com/osteele/functional-javascript)
+library:
 
-    circles
-        .attr('cx', function (d, i) {
-            return 50 * d + 10;
-        })
-        .attr('cy', function (d, i) {
-            return 50 * i;
-        })
-        .attr('r', function (x) {
-            return 5 * Math.sqrt(x);
-        });
+    $ node
+    > λ = require('lambada');
 
-you can write this:
+    > f = λ('*10')
+    > f(7)
+    70
 
-    λ = require('lambada');
+    > f = λ('10 * a + b')
+    > f(4, 1)
+    41
 
-    circles
-        .attr('cx', λ('50 * d + 10'))
-        .attr('cy', λ('d, i -> 50 * i'))
-        .attr('r',  λ('5 * Math.sqrt(x)'));
+    > f = λ('x, y -> y + "!"')
+    > f('hello', 'world')
+    'world!'
 
-And so instead of dancing like this:
+Together with JavaScript's built-in high-order functions,
+lambada allows you to write terse, functional code:
+
+    > [6, 1, 4, 7, 5, 2, 4].filter(λ('>4')).map(λ('*11'))
+    [ 66, 77, 55 ]
+
+Read the [tests](test.js) to see more examples.
+
+Lambada implements [UMD](https://github.com/umdjs/umd)
+so it should play well (*crosses fingers*)
+with RequireJS, Node and Browserify.
+
+With lambada, you'll stop dancing like this:
 
     \o     o/   \o\
      |\   /|     |
     /\    < \   /\
 
-you can dance like this:
+and you'll begin dancing like this:
 
 ![Lambada](http://31.media.tumblr.com/4c9669b5138ff14cffa81d0b0f0e0e4e/tumblr_mijb4m6nkZ1rqbnt0o1_500.gif)
 
 
-## Instructions
+## Instructions for development
 
 Install development dependencies:
 
@@ -51,6 +59,6 @@ Create minified version:
 
     $ gulp uglify
 
-Lambada implements [UMD](https://github.com/umdjs/umd)
-so it should play well (*crosses fingers*)
-with RequireJS, Node and Browserify.
+## License
+
+[MIT license](LICENSE.md).
