@@ -16,7 +16,7 @@ function compareFunctions(f, g, domain) {
     });
 }
 
-describe('lambada', function () {
+describe('λ', function () {
     it('should be a function', function () {
         expect(typeof λ).toEqual('function');
     });
@@ -81,7 +81,7 @@ describe('lambada', function () {
     });
 });
 
-describe('lambada.sequence', function () {
+describe('λ.sequence', function () {
     it('exists and is a function', function () {
         expect(λ.sequence).toBeDefined();
         expect(typeof λ.sequence).toEqual('function');
@@ -108,7 +108,7 @@ describe('lambada.sequence', function () {
     });
 });
 
-describe('lambada.compose', function () {
+describe('λ.compose', function () {
     it('exists and is a function', function () {
         expect(λ.compose).toBeDefined();
         expect(typeof λ.compose).toEqual('function');
@@ -135,7 +135,7 @@ describe('lambada.compose', function () {
     });
 });
 
-describe('lambada.flip', function () {
+describe('λ.flip', function () {
     it('exists and is a function', function () {
         expect(λ.flip).toBeDefined();
         expect(typeof λ.flip).toEqual('function');
