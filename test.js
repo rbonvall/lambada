@@ -7,7 +7,7 @@ var λ = require('./lambada');
 var numbers = [[-1], [0], [1], [Math.PI], [0.1], [142857], [Infinity]];
 var pairs = [[0, 0], [Math.PI, -Math.SQRT2], [1, 1], [-1, 0], [100/7, -200/13]];
 var triplets = [[0, 0, 0], [Math.PI, -Math.SQRT2, 100], [1, 3, 2], [100/7, -200/13, 400/Math.E]];
-var things = ['xyz', Math.E, ['Hola', 'mundo'], {a: 11, b: 22, c: 33}, function () {}];
+var things = ['xyz', Math.E, ['Hola', 'mundo'], {a: 11, b: 22, c: 33}, function () {}, undefined, null, false];
 
 var slice = Array.prototype.slice;
 
