@@ -62,17 +62,13 @@ and you'll begin dancing like this:
 
 ## Instructions for development
 
-Install development dependencies:
+    $ git clone https://github.com/rbonvall/lambada
+    $ cd lambada
 
-    $ npm install
-
-Lint and run tests:
-
-    $ gulp
-
-Create minified version:
-
-    $ gulp uglify
+    $ npm install    # Install development dependencies
+    $ gulp lint      # Lint code
+    $ gulp test      # Run tests
+    $ gulp uglify    # Minify
 
 ## License
 
