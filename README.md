@@ -1,4 +1,4 @@
-# Lambada — create simply functions easily in JavaScript
+# Lambada — create simple functions easily in JavaScript
 
 > A lambda função vai estar com ele aonde for.
 
