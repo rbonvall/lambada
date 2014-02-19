@@ -134,3 +134,27 @@ describe('lambada.compose', function () {
         compareFunctions(f, g, pairs);
     });
 });
+
+describe('lambada.flip', function () {
+    it('exists and is a function', function () {
+        expect(λ.flip).toBeDefined();
+        expect(typeof λ.flip).toBe('function');
+    });
+
+    it('swaps the first and second arguments of a regular function', function () {
+        var f = λ.flip(function (x, y) { return 100 * x + y; });
+        var g =        function (y, x) { return 100 * x + y; } ;
+        compareFunctions(f, g, pairs);
+    });
+
+    it('swaps the first and second arguments of a string lambda function', function () {
+        var f = λ.flip('x, y -> 1000 * x + y');
+        var g = λ     ('y, x -> 1000 * x + y');
+        compareFunctions(f, g, pairs);
+    });
+
+    it('keeps arguments after the second untouched', function () {
+        var f = λ.flip(function () { return Array.prototype.slice.call(arguments); });
+        expect(f(11, 22, 33, 44, 55)).toEqual([22, 11, 33, 44, 55]);
+    });
+});

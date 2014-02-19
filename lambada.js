@@ -83,5 +83,13 @@
         return lambada.sequence.apply(null, reversedArgs);
     };
 
+    lambada.flip = function (f) {
+        f = lambada(f);
+        return function () {
+            var flippedArgs = [arguments[1], arguments[0]].concat(slice.call(arguments, 2));
+            return f.apply(null, flippedArgs);
+        };
+    };
+
     return lambada;
 }));
