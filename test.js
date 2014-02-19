@@ -9,30 +9,30 @@ var pairs = [[0, 0], [Math.PI, -Math.SQRT2], [1, 1], [-1, 0], [100/7, -200/13]];
 var triplets = [[0, 0, 0], [Math.PI, -Math.SQRT2, 100], [1, 3, 2], [100/7, -200/13, 400/Math.E]];
 
 function compareFunctions(f, g, domain) {
-    expect(typeof f).toBe('function');
-    expect(typeof g).toBe('function');
+    expect(typeof f).toEqual('function');
+    expect(typeof g).toEqual('function');
     domain.forEach(function (args) {
-        expect(f.apply(null, args)).toBe(g.apply(null, args));
+        expect(f.apply(null, args)).toEqual(g.apply(null, args));
     });
 }
 
 describe('lambada', function () {
     it('should be a function', function () {
-        expect(typeof λ).toBe('function');
+        expect(typeof λ).toEqual('function');
     });
 
     it("passes Functional Javascript's tests", function () {
-        expect(λ('x -> x + 1')(1)).toBe(2);
-        expect(λ('x y -> x + 2*y')(1, 2)).toBe(5);
-        expect(λ('x, y -> x + 2*y')(1, 2)).toBe(5);
-        expect(λ('_ + 1')(1)).toBe(2);
-        expect(λ('/2')(4)).toBe(2);
-        expect(λ('2/')(4)).toBe(0.5);
-        expect(λ('/')(2,4)).toBe(0.5);
-        expect(λ('x + 1')(1)).toBe(2);
-        expect(λ('x + 2*y')(1, 2)).toBe(5);
-        expect(λ('y + 2*x')(1, 2)).toBe(5);
-        expect(λ('x -> y -> x + 2*y')(1)(2)).toBe(5);
+        expect(λ('x -> x + 1')(1)).toEqual(2);
+        expect(λ('x y -> x + 2*y')(1, 2)).toEqual(5);
+        expect(λ('x, y -> x + 2*y')(1, 2)).toEqual(5);
+        expect(λ('_ + 1')(1)).toEqual(2);
+        expect(λ('/2')(4)).toEqual(2);
+        expect(λ('2/')(4)).toEqual(0.5);
+        expect(λ('/')(2,4)).toEqual(0.5);
+        expect(λ('x + 1')(1)).toEqual(2);
+        expect(λ('x + 2*y')(1, 2)).toEqual(5);
+        expect(λ('y + 2*x')(1, 2)).toEqual(5);
+        expect(λ('x -> y -> x + 2*y')(1)(2)).toEqual(5);
     });
 
     it('creates a unary function for a simple expression', function () {
@@ -63,8 +63,8 @@ describe('lambada', function () {
     it('caches functions', function () {
         var f = λ('x -> 2 * x + 5');
         var g = λ('x -> 2 * x + 5');
-        expect(typeof f).toBe('function');
-        expect(typeof g).toBe('function');
+        expect(typeof f).toEqual('function');
+        expect(typeof g).toEqual('function');
         expect(f).toBe(g);
     });
 
@@ -77,14 +77,14 @@ describe('lambada', function () {
     it('supports dot something as an operation', function () {
         var f = λ('.foo');
         var obj = { foo: 5, bar: 6, baz: 7 };
-        expect(f(obj)).toBe(5);
+        expect(f(obj)).toEqual(5);
     });
 });
 
 describe('lambada.sequence', function () {
     it('exists and is a function', function () {
         expect(λ.sequence).toBeDefined();
-        expect(typeof λ.sequence).toBe('function');
+        expect(typeof λ.sequence).toEqual('function');
     });
 
     it('applies unary functions from left to right', function () {
@@ -111,7 +111,7 @@ describe('lambada.sequence', function () {
 describe('lambada.compose', function () {
     it('exists and is a function', function () {
         expect(λ.compose).toBeDefined();
-        expect(typeof λ.compose).toBe('function');
+        expect(typeof λ.compose).toEqual('function');
     });
 
     it('applies unary functions from right to left', function () {
@@ -138,7 +138,7 @@ describe('lambada.compose', function () {
 describe('lambada.flip', function () {
     it('exists and is a function', function () {
         expect(λ.flip).toBeDefined();
-        expect(typeof λ.flip).toBe('function');
+        expect(typeof λ.flip).toEqual('function');
     });
 
     it('swaps the first and second arguments of a regular function', function () {
