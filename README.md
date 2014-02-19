@@ -28,6 +28,21 @@ lambada allows you to write terse, functional code:
     > [6, 1, 4, 7, 5, 2, 4].filter(λ('>4')).map(λ('*11'))
     [ 66, 77, 55 ]
 
+Lambada also provides some practical utility functions
+for creating and combining other functions for common use cases.
+For example, function composition:
+
+    // Random numbers between 0 and 5 with one decimal digit
+    > random = λ.compose('/10', Math.floor, '*50', Math.random)
+    > random()
+    3.5
+    > random()
+    0.2
+    > random()
+    3.3
+    > random()
+    2.6
+
 Read the [tests](test.js) to see more examples.
 
 Lambada implements [UMD](https://github.com/umdjs/umd)
