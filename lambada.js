@@ -91,5 +91,9 @@
         };
     };
 
+    lambada.id = function (x) { return x; };
+
+    lambada.constant = function (x) { return function () { return x; }; };
+
     return lambada;
 }));

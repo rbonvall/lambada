@@ -7,6 +7,7 @@ var λ = require('./lambada');
 var numbers = [[-1], [0], [1], [Math.PI], [0.1], [142857], [Infinity]];
 var pairs = [[0, 0], [Math.PI, -Math.SQRT2], [1, 1], [-1, 0], [100/7, -200/13]];
 var triplets = [[0, 0, 0], [Math.PI, -Math.SQRT2, 100], [1, 3, 2], [100/7, -200/13, 400/Math.E]];
+var things = [['xyz'], [Math.E], [['Hola', 'mundo']], [{a: 11, b: 22, c: 33}], [function () {}]];
 
 var slice = Array.prototype.slice;
 
@@ -158,5 +159,33 @@ describe('λ.flip', function () {
     it('keeps arguments after the second untouched', function () {
         var f = λ.flip(function () { return slice.call(arguments); });
         expect(f(11, 22, 33, 44, 55)).toEqual([22, 11, 33, 44, 55]);
+    });
+});
+
+describe('λ.id', function () {
+    it('exists and is a function', function () {
+        expect(λ.id).toBeDefined();
+        expect(typeof λ.id).toEqual('function');
+    });
+
+    it('returns its first argument', function () {
+        things.forEach(function (thing) {
+            expect(λ.id(thing)).toBe(thing);
+        });
+    });
+});
+
+describe('λ.constant', function () {
+    it('exists and is a function', function () {
+        expect(λ.constant).toBeDefined();
+        expect(typeof λ.constant).toEqual('function');
+    });
+
+    it('returns a function that returns the constant', function () {
+        things.forEach(function (thing) {
+            var k = λ.constant(thing);
+            expect(k()).toBe(thing);
+            expect(k(99, 88, 77)).toBe(thing);
+        });
     });
 });
