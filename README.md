@@ -43,7 +43,8 @@ For example, function composition:
     > random()
     2.6
 
-Read the [tests](test.js) to see more examples.
+Read the [tests](https://github.com/rbonvall/lambada/blob/master/test.js)
+to see more examples.
 
 Lambada implements [UMD](https://github.com/umdjs/umd)
 so it should play well (*crosses fingers*)
@@ -72,4 +73,4 @@ and you'll begin dancing like this:
 
 ## License
 
-[MIT license](LICENSE.md).
+[MIT license](https://github.com/rbonvall/lambada/blob/master/LICENSE.md).
