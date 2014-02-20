@@ -9,8 +9,8 @@
     "gulp-rename": "~1.0.0"
   },
   "name": "lambada",
-  "description": "Lambada is just the string lambda part of [Functional Javascript](https://github.com/osteele/functional-javascript).",
-  "version": "0.1.0",
+  "description": "Create simple functions easily with string lambdas.",
+  "version": "0.1.1",
   "main": "lambada.js",
   "scripts": {
     "test": "node_modules/gulp-jasmine/node_modules/minijasminenode/bin/minijn test.js",
