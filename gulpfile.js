@@ -6,7 +6,7 @@ var rename = require('gulp-rename');
 
 gulp.task('lint', function () {
     return gulp.src('./*.js')
-        .pipe(jshint('jshintrc.json'))
+        .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
