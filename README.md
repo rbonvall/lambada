@@ -2,6 +2,8 @@
 
 > A lambda função vai estar com ele aonde for.
 
+[![Build Status](https://travis-ci.org/rbonvall/lambada.png?branch=master)](https://travis-ci.org/rbonvall/lambada)
+
 Lambada is a small library for creating simple functions easily in Javascript.
 It borrows the **string lambda** concept (and source code) from the
 [Functional Javascript](https://github.com/osteele/functional-javascript)
