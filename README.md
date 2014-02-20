@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.org/rbonvall/lambada.png?branch=master)](https://travis-ci.org/rbonvall/lambada)
 [![NPM version](https://badge.fury.io/js/lambada.png)](http://badge.fury.io/js/lambada)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rbonvall/lambada/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Lambada is a small library for creating simple functions easily in Javascript.
 It borrows the **string lambda** concept (and source code) from the
